@@ -5,7 +5,7 @@
 
 For full documentation, please refer to:
 
-<a href="https://gaeel.github.com/KubernetesAppAutoscaling"> This GitHub project page </a>
+<a href="https://gaeel.github.io/KubernetesAppAutoscaling"> This GitHub project page </a>
 
 
 Original repo is still availabile at:
