@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: glar-demo-application
+  labels:
+    app: glar-demo-application 
+spec:
+  selector:
+    matchLabels:
+      app: glar-demo-application
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: glar-demo-application
+      annotations:
+        # Enable Prometheus scrapping
+        prometheus.io/scrape: 'true'
+        # Metrics are available on /metrics
+        prometheus.io/path: '/metrics'
+    spec:
+      containers:
+      - name: glar-demo-application
+        # Use the built image
+        image: demo-application
+        # Do not pull it if it's already present
+        imagePullPolicy: IfNotPresent
+        # The app is listening on TCP:8080
+        ports:
+          - containerPort: 8080
+        readinessProbe:
+          # Wait 5 seconds before checking for readiness (~ SpringBoot start time)
+          initialDelaySeconds: 5
+          # Check each 5 seconds if the app is already alive
+          periodSeconds: 5
+          # Heatlh check is realized via an HTTP GET on :8080/health
+          httpGet:
+            path: /health
+            port: 8080
+        resources:
+          limits:
+            memory: 256Mi

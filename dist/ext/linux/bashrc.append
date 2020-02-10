@@ -1,0 +1,2 @@
+alias k='kubectl'
+PATH=/opt/kubernetes/bin:$PATH

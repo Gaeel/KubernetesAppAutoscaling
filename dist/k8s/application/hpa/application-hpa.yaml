@@ -1,0 +1,21 @@
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: glar-demo-application-hpa
+spec:
+  # The scaled entity is the Deployment
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: glar-demo-application
+  # We need at least one replica, and 10 pods max
+  minReplicas: 1
+  maxReplicas: 10
+  # The scaling will be based on pods metrics
+  metrics:
+  - type: Pods
+    pods:
+      # The average of the request_per_second metric for all pods should be <= to 1
+      metricName: request_per_second
+      targetAverageValue: 1

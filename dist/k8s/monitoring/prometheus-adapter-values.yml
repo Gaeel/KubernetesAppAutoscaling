@@ -1,0 +1,5 @@
+prometheus:
+  url: http://prometheus-server.monitoring
+  port: 80
+
+logLevel: 4 # Change to 6 or 10 for debug

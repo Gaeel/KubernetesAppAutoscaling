@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS LOG_DATA;
+
+CREATE TABLE LOG_DATA (
+     id LONG AUTO_INCREMENT PRIMARY KEY,
+     timestamp TIMESTAMP,
+     endpoint TEXT,
+     code INT,
+     resp_time DOUBLE
+)

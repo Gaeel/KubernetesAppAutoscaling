@@ -1,0 +1,15 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: application-ingress
+  namespace: application 
+spec:
+  rules:
+  - host: application.k8s.home.lab
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: glar-demo-application
+          servicePort: 80
