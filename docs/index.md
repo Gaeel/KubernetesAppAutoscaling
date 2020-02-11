@@ -10,7 +10,7 @@ Goals are:
 - Performing tests of the system
 - Modelizing the operation of the HPA
 - Reviewing possible optimizations
-- Document and give presentations
+- Documenting and giving presentations
 
 
 # Documentation
